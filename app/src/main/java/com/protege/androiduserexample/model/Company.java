@@ -9,7 +9,7 @@ public class Company {
     @SerializedName("name")
     private String name;
 
-    @SerializedName("catchPhrase")
+    @SerializedName("bs")
     private String bs;
 
     public String getCatchPhrase () {
