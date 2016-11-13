@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 
 import com.protege.androiduserexample.api.EndpointInterface;
 import com.protege.androiduserexample.model.User;
@@ -13,7 +12,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,11 +35,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         populateUserList();
-    }
-
-    @OnClick(R.id.fab)
-    public void addUser(View view) {
-        //TODO include functionality to add additional users
     }
 
     private void populateUserList() {
