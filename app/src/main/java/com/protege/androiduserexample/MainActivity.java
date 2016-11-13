@@ -2,12 +2,16 @@ package com.protege.androiduserexample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
+import com.protege.androiduserexample.adapter.UserSummaryAdapter;
 import com.protege.androiduserexample.api.EndpointInterface;
 import com.protege.androiduserexample.model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -25,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+
+    private UserSummaryAdapter adapter;
+
+    private ArrayList<User> userList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar.setTitle(R.string.users);
         setSupportActionBar(toolbar);
+
+        userList = new ArrayList<>();
+        adapter = new UserSummaryAdapter(userList);
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
 
         populateUserList();
     }
@@ -51,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 Log.d("Main", "Users: " + response.body());
+                userList.addAll(response.body());
+                adapter.notifyDataSetChanged();
             }
 
             @Override
