@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <include layout="@layout/progress_indicator_centered"/>
 
     <include layout="@layout/toolbar"/>
 
     <include layout="@layout/recycler_view"/>
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -22,13 +22,17 @@ public class UserDetailActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    public static final String USER_ID_EXTRA = "user_id";
+
+    private User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
         ButterKnife.bind(this);
 
-        User user = Parcels.unwrap(getIntent().getParcelableExtra(MainActivity.USER_EXTRA));
+        user = Parcels.unwrap(getIntent().getParcelableExtra(MainActivity.USER_EXTRA));
 
         if(user != null) {
             userDetailView.setUserDetails(user);
@@ -36,12 +40,17 @@ public class UserDetailActivity extends AppCompatActivity {
             toolbar.setTitle(user.getName());
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        } else {
+
         }
     }
 
     @OnClick(R.id.view_posts)
     public void viewPosts() {
-        Intent intent = new Intent(this, UserPostsActivity.class);
-        startActivity(intent);
+        if(user != null) {
+            Intent intent = new Intent(this, UserPostsActivity.class);
+            intent.putExtra(USER_ID_EXTRA, user.getId());
+            startActivity(intent);
+        }
     }
 }
