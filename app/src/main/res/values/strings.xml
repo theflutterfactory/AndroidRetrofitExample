@@ -4,4 +4,11 @@
     <string name="users">Users</string>
     <string name="username">Username: %s</string>
     <string name="company">Company: %s</string>
+    <string name="website">Website: %s</string>
+    <string name="email">Email: %s</string>
+    <string name="phone">Phone: %s</string>
+    <string name="street">Street: %s</string>
+    <string name="suite">Suite: %s</string>
+    <string name="city">City: %s</string>
+    <string name="zip">Zip Code: %s</string>
 </resources>

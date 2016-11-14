@@ -6,6 +6,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.protege.androiduserexample.R;
+import com.protege.androiduserexample.model.Address;
 import com.protege.androiduserexample.model.User;
 
 import butterknife.BindView;
@@ -51,6 +52,17 @@ public class UserDetailView extends LinearLayout {
     }
 
     public void setUserDetails(User user){
+        Context context = getContext();
+        userName.setText(String.format(context.getString(R.string.username), user.getUsername()));
+        webSite.setText(String.format(context.getString(R.string.website), user.getWebsite()));
+        email.setText(String.format(context.getString(R.string.email), user.getEmail()));
+        phoneNumber.setText(String.format(context.getString(R.string.phone), user.getPhone()));
 
+        //TODO Address could go into a separate view class if necessary
+        Address address = user.getAddress();
+        street.setText(String.format(context.getString(R.string.street), address.getStreet()));
+        suite.setText(String.format(context.getString(R.string.suite), address.getSuite()));
+        city.setText(String.format(context.getString(R.string.city), address.getCity()));
+        zipCode.setText(String.format(context.getString(R.string.zip), address.getZipcode()));
     }
 }

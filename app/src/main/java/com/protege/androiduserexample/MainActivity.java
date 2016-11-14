@@ -12,6 +12,8 @@ import com.protege.androiduserexample.adapter.UserSummaryAdapter;
 import com.protege.androiduserexample.api.EndpointInterface;
 import com.protege.androiduserexample.model.User;
 
+import org.parceler.Parcels;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<User> userList;
 
+    public static final String USER_EXTRA = "USER";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onUserClick(User user) {
                 Intent intent = new Intent(MainActivity.this, UserDetailActivity.class);
+                intent.putExtra(USER_EXTRA, Parcels.wrap(user));
                 startActivity(intent);
             }
         });
