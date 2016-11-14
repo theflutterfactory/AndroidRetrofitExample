@@ -5,11 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.protege.androiduserexample.MainActivity;
 import com.protege.androiduserexample.R;
 import com.protege.androiduserexample.model.User;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -40,6 +42,9 @@ public class UserSummaryAdapter extends RecyclerView.Adapter<UserSummaryAdapter.
         @BindView(R.id.company)
         TextView company;
 
+        @BindView(R.id.profile_photo)
+        ImageView profilePhoto;
+
         public ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
@@ -62,6 +67,11 @@ public class UserSummaryAdapter extends RecyclerView.Adapter<UserSummaryAdapter.
                 user.getUsername()));
         holder.company.setText(String.format(context.getString(R.string.company),
                 user.getCompany().getName()));
+
+        //Todo create an interesting placeholder
+        Picasso.with(context)
+                .load("http://bit.ly/2f7pckl")
+                .into(holder.profilePhoto);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
