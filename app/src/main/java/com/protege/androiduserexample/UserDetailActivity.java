@@ -1,5 +1,6 @@
 package com.protege.androiduserexample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -28,15 +29,19 @@ public class UserDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         User user = Parcels.unwrap(getIntent().getParcelableExtra(MainActivity.USER_EXTRA));
-        userDetailView.setUserDetails(user);
 
-        toolbar.setTitle(user.getName());
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(user != null) {
+            userDetailView.setUserDetails(user);
+
+            toolbar.setTitle(user.getName());
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @OnClick(R.id.view_posts)
     public void viewPosts() {
-
+        Intent intent = new Intent(this, UserPostsActivity.class);
+        startActivity(intent);
     }
 }

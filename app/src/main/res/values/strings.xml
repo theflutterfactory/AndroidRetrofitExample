@@ -11,4 +11,5 @@
     <string name="suite">Suite: %s</string>
     <string name="city">City: %s</string>
     <string name="zip">Zip Code: %s</string>
+    <string name="posts">Posts</string>
 </resources>
