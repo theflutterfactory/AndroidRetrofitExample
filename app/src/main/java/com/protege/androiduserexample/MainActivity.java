@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.protege.androiduserexample.adapter.UserSummaryAdapter;
 import com.protege.androiduserexample.api.EndpointInterface;
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
+
+    @BindView(R.id.progressbar)
+    ProgressBar progressBar;
 
     private UserSummaryAdapter adapter;
 
@@ -80,12 +85,14 @@ public class MainActivity extends AppCompatActivity {
         users.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                progressBar.setVisibility(View.GONE);
                 userList.addAll(response.body());
                 adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
                 Log.d("Main", "Error: " + t.getCause());
             }
         });
