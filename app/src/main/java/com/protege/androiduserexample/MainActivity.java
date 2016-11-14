@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         userList = new ArrayList<>();
-        adapter = new UserSummaryAdapter(userList);
+        adapter = new UserSummaryAdapter(this, userList);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         users.enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                Log.d("Main", "Users: " + response.body());
                 userList.addAll(response.body());
                 adapter.notifyDataSetChanged();
             }

@@ -2,4 +2,6 @@
     <string name="app_name">AndroidUserExample</string>
     <string name="action_settings">Settings</string>
     <string name="users">Users</string>
+    <string name="username">Username: %s</string>
+    <string name="company">Company: %s</string>
 </resources>

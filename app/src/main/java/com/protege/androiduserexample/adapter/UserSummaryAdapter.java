@@ -1,5 +1,6 @@
 package com.protege.androiduserexample.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,24 +12,33 @@ import com.protege.androiduserexample.model.User;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class UserSummaryAdapter extends RecyclerView.Adapter<UserSummaryAdapter.ViewHolder> {
 
     private ArrayList<User> userList;
+    private Context context;
 
-    public UserSummaryAdapter(ArrayList<User> userList) {
+    public UserSummaryAdapter(Context context, ArrayList<User> userList) {
         this.userList = userList;
+        this.context = context;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView name;
-        public TextView userName;
-        public TextView company;
 
-        public ViewHolder(View v) {
-            super(v);
-            name = (TextView) v.findViewById(R.id.name);
-            userName = (TextView) v.findViewById(R.id.username);
-            company = (TextView) v.findViewById(R.id.company);
+        @BindView(R.id.name)
+        TextView name;
+
+        @BindView(R.id.username)
+        TextView userName;
+
+        @BindView(R.id.company)
+        TextView company;
+
+        public ViewHolder(View view) {
+            super(view);
+            ButterKnife.bind(this, view);
         }
     }
 
@@ -44,8 +54,10 @@ public class UserSummaryAdapter extends RecyclerView.Adapter<UserSummaryAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         User user = userList.get(position);
         holder.name.setText(user.getName());
-        holder.userName.setText("Username: " + user.getUsername());
-        holder.company.setText("Company: " + user.getCompany().getName());
+        holder.userName.setText(String.format(context.getString(R.string.username),
+                user.getUsername()));
+        holder.company.setText(String.format(context.getString(R.string.company),
+                user.getCompany().getName()));
     }
 
     @Override
