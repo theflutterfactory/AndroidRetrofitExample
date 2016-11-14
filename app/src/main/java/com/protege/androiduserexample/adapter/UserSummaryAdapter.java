@@ -20,14 +20,12 @@ import butterknife.ButterKnife;
 
 public class UserSummaryAdapter extends RecyclerView.Adapter<UserSummaryAdapter.ViewHolder> {
 
-    private ArrayList<User> userList;
-    private Context context;
-    private MainActivity.OnUserClicked userClickedListener;
+    private final ArrayList<User> userList;
+    private final MainActivity.OnUserClicked userClickedListener;
 
-    public UserSummaryAdapter(Context context, ArrayList<User> userList,
+    public UserSummaryAdapter(ArrayList<User> userList,
                               MainActivity.OnUserClicked userClickedListener) {
         this.userList = userList;
-        this.context = context;
         this.userClickedListener = userClickedListener;
     }
 
@@ -55,12 +53,13 @@ public class UserSummaryAdapter extends RecyclerView.Adapter<UserSummaryAdapter.
     public UserSummaryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_user_summary,
                 parent, false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        Context context = holder.itemView.getContext();
+
         final User user = userList.get(position);
         holder.name.setText(user.getName());
         holder.userName.setText(String.format(context.getString(R.string.username),

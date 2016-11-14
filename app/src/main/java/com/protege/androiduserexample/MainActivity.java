@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         userList = new ArrayList<>();
-        adapter = new UserSummaryAdapter(this, userList, new OnUserClicked() {
+        adapter = new UserSummaryAdapter(userList, new OnUserClicked() {
             @Override
             public void onUserClick(User user) {
                 Intent intent = new Intent(MainActivity.this, UserDetailActivity.class);
@@ -87,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 progressBar.setVisibility(View.GONE);
                 userList.addAll(response.body());
-                getSupportActionBar().setSubtitle(userList.size() + " total");
+                getSupportActionBar().setSubtitle(String.format(getString(R.string.total),
+                        userList.size()));
                 adapter.notifyDataSetChanged();
             }
 

@@ -12,4 +12,5 @@
     <string name="city">City: %s</string>
     <string name="zip">Zip Code: %s</string>
     <string name="posts">Posts</string>
+    <string name="total">%d total</string>
 </resources>

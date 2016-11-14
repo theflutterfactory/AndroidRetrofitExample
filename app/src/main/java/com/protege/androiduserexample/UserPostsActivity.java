@@ -78,7 +78,8 @@ public class UserPostsActivity extends AppCompatActivity {
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 progressBar.setVisibility(View.GONE);
                 postLists.addAll(response.body());
-                getSupportActionBar().setSubtitle(postLists.size() + " total");
+                getSupportActionBar().setSubtitle(String.format(getString(R.string.total),
+                        postLists.size()));
                 adapter.notifyDataSetChanged();
             }
 
