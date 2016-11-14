@@ -13,8 +13,6 @@ import com.protege.androiduserexample.adapter.PostsAdapter;
 import com.protege.androiduserexample.api.EndpointInterface;
 import com.protege.androiduserexample.model.Post;
 
-import org.parceler.Parcels;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,6 +78,7 @@ public class UserPostsActivity extends AppCompatActivity {
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 progressBar.setVisibility(View.GONE);
                 postLists.addAll(response.body());
+                getSupportActionBar().setSubtitle(postLists.size() + " total");
                 adapter.notifyDataSetChanged();
             }
 

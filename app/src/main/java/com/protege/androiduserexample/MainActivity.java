@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 progressBar.setVisibility(View.GONE);
                 userList.addAll(response.body());
+                getSupportActionBar().setSubtitle(userList.size() + " total");
                 adapter.notifyDataSetChanged();
             }
 
