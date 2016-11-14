@@ -1,5 +1,6 @@
 package com.protege.androiduserexample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -46,7 +47,13 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         userList = new ArrayList<>();
-        adapter = new UserSummaryAdapter(this, userList);
+        adapter = new UserSummaryAdapter(this, userList, new OnUserClicked() {
+            @Override
+            public void onUserClick(User user) {
+                Intent intent = new Intent(MainActivity.this, UserDetailActivity.class);
+                startActivity(intent);
+            }
+        });
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -77,5 +84,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Main", "Error: " + t.getCause());
             }
         });
+    }
+
+    public interface OnUserClicked {
+        void onUserClick(User user);
     }
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.protege.androiduserexample.MainActivity;
 import com.protege.androiduserexample.R;
 import com.protege.androiduserexample.model.User;
 
@@ -19,10 +20,13 @@ public class UserSummaryAdapter extends RecyclerView.Adapter<UserSummaryAdapter.
 
     private ArrayList<User> userList;
     private Context context;
+    private MainActivity.OnUserClicked userClickedListener;
 
-    public UserSummaryAdapter(Context context, ArrayList<User> userList) {
+    public UserSummaryAdapter(Context context, ArrayList<User> userList,
+                              MainActivity.OnUserClicked userClickedListener) {
         this.userList = userList;
         this.context = context;
+        this.userClickedListener = userClickedListener;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -52,12 +56,19 @@ public class UserSummaryAdapter extends RecyclerView.Adapter<UserSummaryAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        User user = userList.get(position);
+        final User user = userList.get(position);
         holder.name.setText(user.getName());
         holder.userName.setText(String.format(context.getString(R.string.username),
                 user.getUsername()));
         holder.company.setText(String.format(context.getString(R.string.company),
                 user.getCompany().getName()));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                userClickedListener.onUserClick(user);
+            }
+        });
     }
 
     @Override
