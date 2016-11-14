@@ -32,6 +32,7 @@ public class UserDetailActivity extends AppCompatActivity {
 
         toolbar.setTitle(user.getName());
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @OnClick(R.id.view_posts)
