@@ -22,9 +22,11 @@
         android:layout_height="wrap_content"
         tools:text="Godzilla"
         android:textSize="14sp"
-        android:paddingLeft="16dp"
+        android:paddingLeft="24dp"
         android:paddingBottom="8dp"
-        android:paddingTop="8dp"/>
+        android:paddingTop="16dp"/>
+
+    <include layout="@layout/divider"/>
 
     <TextView
         android:id="@+id/website"
@@ -32,9 +34,11 @@
         android:layout_height="wrap_content"
         tools:text="www.juliancurrie.com"
         android:textSize="14sp"
-        android:paddingLeft="16dp"
+        android:paddingLeft="24dp"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"/>
+
+    <include layout="@layout/divider"/>
 
     <TextView
         android:id="@+id/email"
@@ -42,9 +46,11 @@
         android:layout_height="wrap_content"
         tools:text="test@gmail.com"
         android:textSize="14sp"
-        android:paddingLeft="16dp"
+        android:paddingLeft="24dp"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"/>
+
+    <include layout="@layout/divider"/>
 
     <TextView
         android:id="@+id/phone_number"
@@ -52,7 +58,7 @@
         android:layout_height="wrap_content"
         tools:text="111-555-8292"
         android:textSize="14sp"
-        android:paddingLeft="16dp"
+        android:paddingLeft="24dp"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"/>
 
@@ -71,9 +77,11 @@
         android:layout_height="wrap_content"
         tools:text="404 Error Lane"
         android:textSize="14sp"
-        android:paddingLeft="16dp"
+        android:paddingLeft="24dp"
         android:paddingBottom="8dp"
-        android:paddingTop="8dp"/>
+        android:paddingTop="16dp"/>
+
+    <include layout="@layout/divider"/>
 
     <TextView
         android:id="@+id/suite"
@@ -81,9 +89,11 @@
         android:layout_height="wrap_content"
         tools:text="Suite: 200"
         android:textSize="14sp"
-        android:paddingLeft="16dp"
+        android:paddingLeft="24dp"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"/>
+
+    <include layout="@layout/divider"/>
 
     <TextView
         android:id="@+id/city"
@@ -91,9 +101,11 @@
         android:layout_height="wrap_content"
         tools:text="City: Springfield"
         android:textSize="14sp"
-        android:paddingLeft="16dp"
+        android:paddingLeft="24dp"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"/>
+
+    <include layout="@layout/divider"/>
 
     <TextView
         android:id="@+id/zip_code"
@@ -101,9 +113,11 @@
         android:layout_height="wrap_content"
         tools:text="Zipcode: 001100"
         android:textSize="14sp"
-        android:paddingLeft="16dp"
+        android:paddingLeft="24dp"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"/>
+
+    <include layout="@layout/divider"/>
 
     <TextView
         android:id="@+id/view_posts"

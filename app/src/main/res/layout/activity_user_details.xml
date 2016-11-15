@@ -7,5 +7,6 @@
 
     <include layout="@layout/toolbar"/>
 
+    <!--Consider using ListView/RecyclerView if data increases-->
     <include layout="@layout/view_user_detail"/>
 </LinearLayout>
