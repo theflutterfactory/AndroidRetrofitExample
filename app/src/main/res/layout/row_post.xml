@@ -18,6 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:gravity="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
             tools:text="Sub Zero" />
 
         <View
