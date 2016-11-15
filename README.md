@@ -13,5 +13,6 @@ Things other things to be done in the near future include:
 + Adding some color to the app
 
 ![Users](screenshots/user_list.png)
+![Users](screenshots/user_list_expanded.png)
 ![User Details](screenshots/user_details.png)
 ![User Posts](screenshots/user_posts.png)
