@@ -1,10 +1,8 @@
 package com.protege.androiduserexample;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -17,20 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class UserPostsActivity extends AppCompatActivity {
+public class UserPostsActivity extends BaseActivity {
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
 
     @BindView(R.id.progressbar)
     ProgressBar progressBar;
@@ -42,11 +36,7 @@ public class UserPostsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_posts);
-        ButterKnife.bind(this);
 
-        toolbar.setTitle(getString(R.string.posts));
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         postLists = new ArrayList<>();
@@ -61,6 +51,16 @@ public class UserPostsActivity extends AppCompatActivity {
         if(userId != null) {
             populateUserPosts(userId);
         }
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_user_posts;
+    }
+
+    @Override
+    public String getToolbarTitle() {
+        return getString(R.string.posts);
     }
 
     private void populateUserPosts(String userId) {

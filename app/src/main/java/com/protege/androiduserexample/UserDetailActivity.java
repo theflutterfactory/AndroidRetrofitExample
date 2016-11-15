@@ -2,8 +2,7 @@ package com.protege.androiduserexample;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.protege.androiduserexample.model.User;
 import com.protege.androiduserexample.view.UserDetailView;
@@ -11,16 +10,12 @@ import com.protege.androiduserexample.view.UserDetailView;
 import org.parceler.Parcels;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class UserDetailActivity extends AppCompatActivity {
+public class UserDetailActivity extends BaseActivity {
 
     @BindView(R.id.user_detail_view)
     UserDetailView userDetailView;
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
 
     public static final String USER_ID_EXTRA = "user_id";
 
@@ -28,19 +23,25 @@ public class UserDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_details);
-        ButterKnife.bind(this);
-
         user = Parcels.unwrap(getIntent().getParcelableExtra(MainActivity.USER_EXTRA));
+
+        super.onCreate(savedInstanceState);
 
         if(user != null) {
             userDetailView.setUserDetails(user);
-
-            toolbar.setTitle(user.getName());
-            setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_user_details;
+    }
+
+    @Override
+    public String getToolbarTitle() {
+        String title = user == null ? getString(R.string.unknown_user) : user.getName();
+        return title;
     }
 
     @OnClick(R.id.view_posts)
