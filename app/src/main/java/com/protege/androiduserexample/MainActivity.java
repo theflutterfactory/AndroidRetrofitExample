@@ -2,6 +2,7 @@ package com.protege.androiduserexample;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.progressbar)
     ProgressBar progressBar;
 
+    @BindView(R.id.collapsing_toolbar)
+    CollapsingToolbarLayout collapsingToolbarLayout;
+
     private UserSummaryAdapter adapter;
 
     private ArrayList<User> userList;
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar.setTitle(R.string.users);
         setSupportActionBar(toolbar);
+        collapsingToolbarLayout.setTitle(getString(R.string.users));
 
         userList = new ArrayList<>();
         adapter = new UserSummaryAdapter(userList, new OnUserClicked() {
