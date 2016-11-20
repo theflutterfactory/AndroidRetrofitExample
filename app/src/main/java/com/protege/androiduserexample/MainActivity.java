@@ -11,8 +11,11 @@ import android.widget.ProgressBar;
 
 import com.protege.androiduserexample.adapter.UserSummaryAdapter;
 import com.protege.androiduserexample.api.EndpointInterface;
+import com.protege.androiduserexample.event.UserSummaryEvent;
 import com.protege.androiduserexample.model.User;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
@@ -45,20 +48,19 @@ public class MainActivity extends BaseActivity {
     public static final String USER_EXTRA = "USER";
 
     @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         collapsingToolbarLayout.setTitle(getString(R.string.users));
 
         userList = new ArrayList<>();
-        adapter = new UserSummaryAdapter(userList, new OnUserClicked() {
-            @Override
-            public void onUserClick(User user) {
-                Intent intent = new Intent(MainActivity.this, UserDetailActivity.class);
-                intent.putExtra(USER_EXTRA, Parcels.wrap(user));
-                startActivity(intent);
-            }
-        });
+        adapter = new UserSummaryAdapter(userList);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -105,7 +107,16 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-    public interface OnUserClicked {
-        void onUserClick(User user);
+    @Subscribe
+    public void onUserSummaryClicked(UserSummaryEvent event) {
+        Intent intent = new Intent(MainActivity.this, UserDetailActivity.class);
+        intent.putExtra(USER_EXTRA, Parcels.wrap(event.getUser()));
+        startActivity(intent);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
     }
 }

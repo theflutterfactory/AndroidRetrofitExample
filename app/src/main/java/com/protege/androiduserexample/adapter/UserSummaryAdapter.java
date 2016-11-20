@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.protege.androiduserexample.MainActivity;
 import com.protege.androiduserexample.R;
+import com.protege.androiduserexample.event.UserSummaryEvent;
 import com.protege.androiduserexample.model.User;
 import com.squareup.picasso.Picasso;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 
@@ -21,12 +23,9 @@ import butterknife.ButterKnife;
 public class UserSummaryAdapter extends RecyclerView.Adapter<UserSummaryAdapter.ViewHolder> {
 
     private final ArrayList<User> userList;
-    private final MainActivity.OnUserClicked userClickedListener;
 
-    public UserSummaryAdapter(ArrayList<User> userList,
-                              MainActivity.OnUserClicked userClickedListener) {
+    public UserSummaryAdapter(ArrayList<User> userList) {
         this.userList = userList;
-        this.userClickedListener = userClickedListener;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -75,7 +74,7 @@ public class UserSummaryAdapter extends RecyclerView.Adapter<UserSummaryAdapter.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                userClickedListener.onUserClick(user);
+                EventBus.getDefault().post(new UserSummaryEvent(user));
             }
         });
     }
