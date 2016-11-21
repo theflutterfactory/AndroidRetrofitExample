@@ -2,7 +2,6 @@ package com.protege.androiduserexample;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.protege.androiduserexample.model.User;
 import com.protege.androiduserexample.view.UserDetailView;
@@ -40,8 +39,7 @@ public class UserDetailActivity extends BaseActivity {
 
     @Override
     public String getToolbarTitle() {
-        String title = user == null ? getString(R.string.unknown_user) : user.getName();
-        return title;
+        return user == null ? getString(R.string.unknown_user) : user.getName();
     }
 
     @OnClick(R.id.view_posts)
