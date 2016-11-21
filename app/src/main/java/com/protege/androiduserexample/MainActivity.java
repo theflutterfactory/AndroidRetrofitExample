@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import com.protege.androiduserexample.adapter.UserSummaryAdapter;
 import com.protege.androiduserexample.api.EndpointInterface;
@@ -31,12 +29,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends BaseActivity {
 
     public static final String BASE_URL = "https://jsonplaceholder.typicode.com/";
-
-    @BindView(R.id.recycler_view)
-    RecyclerView recyclerView;
-
-    @BindView(R.id.progressbar)
-    ProgressBar progressBar;
 
     @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout collapsingToolbarLayout;
