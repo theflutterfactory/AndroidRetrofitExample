@@ -13,4 +13,4 @@ Things other things to be done in the near future include:
 + Some useful animations
 + Adding some color to the app
 
-![Users](screenshots/animated.gif)
+![2014-10-22 11_35_09](screenshots/animated.gif)
