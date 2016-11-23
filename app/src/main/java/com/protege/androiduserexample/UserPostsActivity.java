@@ -1,7 +1,9 @@
 package com.protege.androiduserexample;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.transition.Slide;
 import android.util.Log;
 import android.view.View;
 
@@ -27,6 +29,13 @@ public class UserPostsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Slide slide = new Slide();
+            slide.setDuration(300);
+            getWindow().setExitTransition(slide);
+            getWindow().setEnterTransition(slide);
+        }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

@@ -1,8 +1,10 @@
 package com.protege.androiduserexample;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
@@ -103,7 +105,13 @@ public class MainActivity extends BaseActivity {
     public void onUserSummaryClicked(UserSummaryEvent event) {
         Intent intent = new Intent(MainActivity.this, UserDetailActivity.class);
         intent.putExtra(USER_EXTRA, Parcels.wrap(event.getUser()));
-        startActivity(intent);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+            startActivity(intent, oc2.toBundle());
+        } else {
+            startActivity(intent);
+        }
     }
 
     @Override

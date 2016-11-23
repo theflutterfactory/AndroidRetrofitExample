@@ -1,7 +1,11 @@
 package com.protege.androiduserexample;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.transition.Slide;
+import android.view.Gravity;
 
 import com.protege.androiduserexample.model.User;
 import com.protege.androiduserexample.view.UserDetailView;
@@ -23,8 +27,14 @@ public class UserDetailActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         user = Parcels.unwrap(getIntent().getParcelableExtra(MainActivity.USER_EXTRA));
-
         super.onCreate(savedInstanceState);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Slide slide = new Slide(Gravity.LEFT);
+            slide.setDuration(300);
+            getWindow().setExitTransition(slide);
+            getWindow().setEnterTransition(slide);
+        }
 
         if(user != null) {
             userDetailView.setUserDetails(user);
@@ -47,7 +57,13 @@ public class UserDetailActivity extends BaseActivity {
         if(user != null) {
             Intent intent = new Intent(this, UserPostsActivity.class);
             intent.putExtra(USER_ID_EXTRA, user.getId());
-            startActivity(intent);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+                startActivity(intent, oc2.toBundle());
+            } else {
+                startActivity(intent);
+            }
         }
     }
 }
