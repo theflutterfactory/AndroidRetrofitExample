@@ -3,9 +3,11 @@ package com.protege.androiduserexample;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.transition.Slide;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.protege.androiduserexample.adapter.PostsAdapter;
 import com.protege.androiduserexample.api.EndpointInterface;
@@ -16,6 +18,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,6 +28,12 @@ public class UserPostsActivity extends BaseActivity {
 
     @Inject
     Retrofit retrofit;
+
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+
+    @BindView(R.id.progressbar)
+    ProgressBar progressBar;
 
     private PostsAdapter adapter;
 

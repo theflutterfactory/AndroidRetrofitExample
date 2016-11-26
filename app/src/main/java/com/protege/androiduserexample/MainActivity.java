@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.protege.androiduserexample.adapter.UserSummaryAdapter;
 import com.protege.androiduserexample.api.EndpointInterface;
@@ -36,6 +38,12 @@ public class MainActivity extends BaseActivity {
 
     @Inject
     Retrofit retrofit;
+
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+
+    @BindView(R.id.progressbar)
+    ProgressBar progressBar;
 
     private UserSummaryAdapter adapter;
 
