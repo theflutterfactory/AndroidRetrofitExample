@@ -21,19 +21,21 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends BaseActivity {
 
-    public static final String BASE_URL = "https://jsonplaceholder.typicode.com/";
-
     @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout collapsingToolbarLayout;
+
+    @Inject
+    Retrofit retrofit;
 
     private UserSummaryAdapter adapter;
 
@@ -50,6 +52,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ((UserApplication) getApplication()).getNetworkingComponent().inject(this);
 
         collapsingToolbarLayout.setTitle(getString(R.string.users));
 
@@ -74,11 +78,6 @@ public class MainActivity extends BaseActivity {
     }
 
     private void populateUserList() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
         EndpointInterface endpointInterface =
                 retrofit.create(EndpointInterface.class);
 

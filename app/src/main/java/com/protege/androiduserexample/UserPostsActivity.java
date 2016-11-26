@@ -14,13 +14,17 @@ import com.protege.androiduserexample.model.Post;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UserPostsActivity extends BaseActivity {
+
+    @Inject
+    Retrofit retrofit;
 
     private PostsAdapter adapter;
 
@@ -29,6 +33,8 @@ public class UserPostsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ((UserApplication) getApplication()).getNetworkingComponent().inject(this);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Slide slide = new Slide();
@@ -64,11 +70,6 @@ public class UserPostsActivity extends BaseActivity {
     }
 
     private void populateUserPosts(String userId) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(MainActivity.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
         EndpointInterface endpointInterface =
                 retrofit.create(EndpointInterface.class);
 
