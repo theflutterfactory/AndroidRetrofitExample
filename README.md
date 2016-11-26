@@ -1,4 +1,3 @@
-# AndroidUserExample
 A quick and easy android app that fetches and displays data from an open api: https://jsonplaceholder.typicode.com/ Some of the libraries used include:
 
 + Butterknife http://jakewharton.github.io/butterknife/
@@ -13,5 +12,7 @@ Things other things to be done in the near future include:
 + Testing, Testing, Testing (primarily Junit and Espresso)
 + Some useful animations
 + Adding some color to the app
+
+All original code. Feel free to fork, clone, contribute, etc
 
 ![2014-10-22 11_35_09](screenshots/animated.gif)
