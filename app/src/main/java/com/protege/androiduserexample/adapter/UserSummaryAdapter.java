@@ -50,7 +50,7 @@ public class UserSummaryAdapter extends RecyclerView.Adapter<UserSummaryAdapter.
 
     @Override
     public UserSummaryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_user_summary,
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_user_summary,
                 parent, false);
         return new ViewHolder(view);
     }
