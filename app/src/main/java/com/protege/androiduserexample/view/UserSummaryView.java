@@ -1,6 +1,7 @@
 package com.protege.androiduserexample.view;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.view.View;
@@ -52,9 +53,9 @@ public class UserSummaryView extends CardView {
         company.setText(String.format(getContext().getString(R.string.company),
                 user.getCompany().getName()));
 
-        //Todo create an interesting placeholder
         Picasso.with(getContext())
                 .load("http://bit.ly/2f7pckl")
+                .placeholder(ContextCompat.getDrawable(getContext(),R.drawable.profile_placeholder))
                 .into(profilePhoto);
 
         setOnClickListener(new View.OnClickListener() {
