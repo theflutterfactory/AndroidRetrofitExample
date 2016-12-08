@@ -21,10 +21,6 @@ public class Address {
     @SerializedName("city")
     private String city;
 
-    public Geo getGeo() {
-        return geo;
-    }
-
     public String getZipcode() {
         return zipcode;
     }

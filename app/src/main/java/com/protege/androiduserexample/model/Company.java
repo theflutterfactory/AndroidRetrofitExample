@@ -15,15 +15,8 @@ public class Company {
     @SerializedName("bs")
     private String bs;
 
-    public String getCatchPhrase () {
-        return catchPhrase;
-    }
-
     public String getName () {
         return name;
     }
 
-    public String getBs () {
-        return bs;
-    }
 }

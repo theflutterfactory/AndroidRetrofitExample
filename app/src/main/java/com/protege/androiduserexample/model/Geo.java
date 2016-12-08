@@ -11,12 +11,4 @@ public class Geo {
 
     @SerializedName("lat")
     private String lat;
-
-    public String getLng () {
-        return lng;
-    }
-
-    public String getLat () {
-        return lat;
-    }
 }
