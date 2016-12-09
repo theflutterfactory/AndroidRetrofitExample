@@ -61,7 +61,7 @@ public class UserSummaryView extends CardView {
         setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EventBus.getDefault().post(new UserSummaryEvent(user));
+                EventBus.getDefault().post(new UserSummaryEvent(user, profilePhoto));
             }
         });
     }

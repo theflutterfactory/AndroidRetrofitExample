@@ -114,7 +114,10 @@ public class MainActivity extends BaseActivity {
         intent.putExtra(USER_EXTRA, Parcels.wrap(event.getUser()));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+            ActivityOptionsCompat optionsCompat
+                    = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
+                    event.getTransitionView(), getString(R.string.standard_transition));
+
             startActivity(intent, optionsCompat.toBundle());
         } else {
             startActivity(intent);

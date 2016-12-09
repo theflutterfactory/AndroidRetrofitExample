@@ -7,6 +7,12 @@
 
     <include layout="@layout/toolbar"/>
 
-    <!--Consider using ListView/RecyclerView if data increases-->
-    <include layout="@layout/view_user_detail"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--Consider using ListView/RecyclerView if data increases-->
+        <include layout="@layout/view_user_detail"/>
+
+    </ScrollView>
 </LinearLayout>
