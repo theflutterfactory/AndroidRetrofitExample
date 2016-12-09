@@ -59,8 +59,9 @@ public class UserDetailActivity extends BaseActivity {
             intent.putExtra(USER_ID_EXTRA, user.getId());
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
-                startActivity(intent, oc2.toBundle());
+                ActivityOptionsCompat optionsCompat
+                        = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+                startActivity(intent, optionsCompat.toBundle());
             } else {
                 startActivity(intent);
             }

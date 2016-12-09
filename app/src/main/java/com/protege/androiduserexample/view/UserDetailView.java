@@ -1,13 +1,16 @@
 package com.protege.androiduserexample.view;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.protege.androiduserexample.R;
 import com.protege.androiduserexample.model.Address;
 import com.protege.androiduserexample.model.User;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +40,9 @@ public class UserDetailView extends LinearLayout {
     @BindView(R.id.zip_code)
     TextView zipCode;
 
+    @BindView(R.id.profile_photo)
+    ImageView profilePhoto;
+
     public UserDetailView(Context context) {
         super(context);
     }
@@ -52,6 +58,11 @@ public class UserDetailView extends LinearLayout {
     }
 
     public void setUserDetails(User user){
+        Picasso.with(getContext())
+                .load("http://bit.ly/2f7pckl")
+                .placeholder(ContextCompat.getDrawable(getContext(),R.drawable.profile_placeholder))
+                .into(profilePhoto);
+
         Context context = getContext();
         userName.setText(String.format(context.getString(R.string.username), user.getUsername()));
         webSite.setText(String.format(context.getString(R.string.website), user.getWebsite()));
