@@ -14,4 +14,6 @@
     <string name="posts">Posts</string>
     <string name="total">%d total</string>
     <string name="unknown_user">Unknown User</string>
+    <string name="standard_transition">standard_transition</string>
+    <string name="test_url">http://bit.ly/2f7pckl</string>
 </resources>

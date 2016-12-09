@@ -17,6 +17,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="fitCenter"
+            android:transitionName="@string/standard_transition"
             tools:src="@mipmap/ic_launcher"/>
 
     </LinearLayout>

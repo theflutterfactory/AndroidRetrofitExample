@@ -59,7 +59,7 @@ public class UserDetailView extends LinearLayout {
 
     public void setUserDetails(User user){
         Picasso.with(getContext())
-                .load("http://bit.ly/2f7pckl")
+                .load(getContext().getString(R.string.test_url))
                 .placeholder(ContextCompat.getDrawable(getContext(),R.drawable.profile_placeholder))
                 .into(profilePhoto);
 
